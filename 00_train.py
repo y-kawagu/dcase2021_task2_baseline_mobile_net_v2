@@ -225,7 +225,7 @@ if __name__ == "__main__":
         model = keras_model.get_model(param["feature"]["n_frames"], 
                                       param["feature"]["n_mels"],
                                       n_sections,
-                                      param["fit"]["compile"]["optimizer"])
+                                      param["fit"]["lr"])
 
         model.summary()
 

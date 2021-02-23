@@ -12,7 +12,7 @@ from keras.models import Model
 ########################################################################
 # keras model
 ########################################################################
-def get_model(n_frames, n_mels, n_conditions, optimizer):
+def get_model(n_frames, n_mels, n_conditions, lr):
     """
     define the keras model
     the model based on MobileNetV2
@@ -30,7 +30,7 @@ def get_model(n_frames, n_mels, n_conditions, optimizer):
 
     model = Model(x, h)
 
-    model.compile(optimizer=optimizer, 
+    model.compile(optimizer=keras.optimizers.Adam(lr=lr), 
                   loss='categorical_crossentropy', 
                   metrics=['accuracy'])
 
