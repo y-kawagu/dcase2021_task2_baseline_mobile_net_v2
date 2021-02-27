@@ -29,7 +29,7 @@ So, please download the datasets in each stage:
   - Download `dev_data_<machine_type>.zip` from https://zenodo.org/record/xxxxxxx.
 - "Additional training dataset", i.e. the evaluation dataset for training
   - After launch, download `eval_data_train_<machine_type>.zip` from https://zenodo.org/record/yyyyyyy (not available until April. 1, 2021).
-- "Evaluation dataset", i.e. the evaluation for test
+- "Evaluation dataset", i.e. the evaluation dataset for test
   - After launch, download `eval_data_test_<machine_type>.zip` from https://zenodo.org/record/zzzzzzz (not available until June. 1, 2021).
 
 ### 3. Unzip dataset
@@ -81,7 +81,7 @@ Unzip the downloaded files and make the directory structure as follows:
     - /ToyTrain
 - /eval_data (Add this directory after launch)
     - /fan
-        - /train (Unzipped "additional training dataset". Normal data in the **source** and **target** domains for all sections are included.)
+        - /train (Unzipped additional training dataset. Normal data in the **source** and **target** domains for all sections are included.)
             - /section_03_source_train_normal_0000_<attribute>.wav
             - ...
             - /section_03_source_train_normal_0999_<attribute>.wav
@@ -91,14 +91,14 @@ Unzip the downloaded files and make the directory structure as follows:
             - /section_04_source_train_normal_0000_<attribute>.wav
             - ...
             - /section_05_target_train_normal_0002_<attribute>.wav
-        - /source_test (Unzipped "evaluation dataset". Normal and anomaly data in the **source** domain for all sections are included.)
+        - /source_test (Unzipped evaluation dataset. Normal and anomaly data in the **source** domain for all sections are included.)
             - /section_03_source_test_0000.wav
             - ...
             - /section_03_source_test_0199.wav
             - /section_04_source_test_0000.wav
             - ...
             - /section_05_source_test_0199.wav
-        - /target_test (Unzipped "evaluation dataset". Normal and anomaly data in the **target** domain for all sections are included.)
+        - /target_test (Unzipped evaluation dataset. Normal and anomaly data in the **target** domain for all sections are included.)
             - /section_03_target_test_0000.wav
             - ...
             - /section_03_target_test_0199.wav
@@ -115,7 +115,7 @@ Unzip the downloaded files and make the directory structure as follows:
 ### 4. Change parameters
 You can change parameters for feature extraction and model definition by editing `baseline.yaml`.
 
-### 5. Run training script (for development dataset)
+### 5. Run training script (for the development dataset)
 Run the training script `00_train.py`. 
 Use the option `-d` for the development dataset `dev_data/<machine_type>/train/`.
 ```
@@ -127,8 +127,8 @@ Options:
 | --------------------------- | --------------------------------- | ------------------------------------------------------------ | 
 | `-h`                        | `--help`                          | Application help.                                            | 
 | `-v`                        | `--version`                       | Show application version.                                    | 
-| `-d`                        | `--dev`                           | Mode for "development"                                       |  
-| `-e`                        | `--eval`                          | Mode for "evaluation"                                        | 
+| `-d`                        | `--dev`                           | Mode for the development dataset                             |  
+| `-e`                        | `--eval`                          | Mode for the additional training and evaluation datasets     | 
 
 `00_train.py` trains a model for each machine type and store the trained models in the directory `model/`.
 
@@ -202,23 +202,23 @@ arithmetic mean over all machine types, sections, and domains		0.616885065	0.571
 harmonic mean over all machine types, sections, and domains		0.59239137	0.559521566	6.22E-16	6.22E-16	6.22E-16
 ```
 
-### 8. Run training script for "additional training dataset" (after April 1, 2021)
-After the "additional training dataset" is launched, download and unzip it.
+### 8. Run training script for the additional training dataset (after April 1, 2021)
+After the additional training dataset is launched, download and unzip it.
 Move it to `eval_data/<machine_type>/train/`.
 Run the training script `00_train.py` with the option `-e`. 
 ```
 $ python3.6 00_train.py -e
 ```
-Models are trained by using the "additional training dataset" `eval_data/<machine_type>/train/`.
+Models are trained by using the additional training dataset `eval_data/<machine_type>/train/`.
 
-### 9. Run test script for "evaluation dataset" (after June 1, 2021)
-After the "evaluation dataset" for test is launched, download and unzip it.
+### 9. Run test script for the evaluation dataset (after June 1, 2021)
+After the evaluation dataset for test is launched, download and unzip it.
 Move it to `eval_data/<machine_type>/source_test/` and `eval_data/<machine_type>/target_test/`.
 Run the test script `01_test.py` with the option `-e`. 
 ```
 $ python3.6 01_test.py -e
 ```
-Anomaly scores are calculated using the "evaluation dataset", i.e., `eval_data/<machine_type>/source_test/` and `eval_data/<machine_type>/target_test/`.
+Anomaly scores are calculated using the evaluation dataset, i.e., `eval_data/<machine_type>/source_test/` and `eval_data/<machine_type>/target_test/`.
 The anomaly scores are stored as csv files in the directory `result/`.
 You can submit the csv files for the challenge.
 From the submitted csv files, we will calculate AUC, pAUC, and your ranking.
