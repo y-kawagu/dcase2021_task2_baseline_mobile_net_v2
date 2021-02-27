@@ -134,7 +134,7 @@ Options:
 
 ### 6. Run test script (for development dataset)
 Run the test script `01_test.py`.
-Use the option `-d` for the development dataset **dev_data/<machine_type>/test/**.
+Use the option `-d` for the development dataset `dev_data/<machine_type>/test/`.
 ```
 $ python3.6 01_test.py -d
 ```
@@ -149,12 +149,12 @@ Each anomaly score corresponds to a wav file in the directories `dev_data/<machi
 
 `anomaly_score_fan_section_00_source_test.csv`
 ```
-section_00_source_test_normal_0000.wav	-1.4423707
-section_00_source_test_normal_0001.wav	-5.8763485
-section_00_source_test_normal_0002.wav	-2.5255458
-section_00_source_test_normal_0003.wav	-2.3934057
-section_00_source_test_normal_0004.wav	-1.2815342
-section_00_source_test_normal_0005.wav	-8.897109
+section_00_source_test_normal_0000.wav	-5.492875
+section_00_source_test_normal_0001.wav	-13.004328
+section_00_source_test_normal_0002.wav	-7.7093716
+section_00_source_test_normal_0003.wav	-6.13771
+section_00_source_test_normal_0004.wav	-4.9352393
+section_00_source_test_normal_0005.wav	-3.93735
   ...
 ```
 
@@ -163,7 +163,7 @@ Also, anomaly detection results after thresholding can be checked in the csv fil
 `decision_result_fan_section_00_source_test.csv`
 ```
 section_00_source_test_normal_0000.wav	0
-section_00_source_test_normal_0001.wav	1
+section_00_source_test_normal_0001.wav	0
 section_00_source_test_normal_0002.wav	0
 section_00_source_test_normal_0003.wav	0
 section_00_source_test_normal_0004.wav	0
@@ -177,29 +177,29 @@ Also, you can check performance indicators such as AUC, pAUC, precision, recall,
 ```  
 fan						
 section	domain	AUC	pAUC	precision	recall	F1 score
-0	source	0.75	0.533157895	0.684782609	0.63	0.65625
-1	source	0.7988	0.591578947	0.795454545	0.35	0.486111111
-2	source	0.7434	0.526842105	0.70212766	0.33	0.448979592
-0	target	0.7816	0.638947368	0.74	0.74	0.74
-1	target	0.5526	0.53	0.590361446	0.49	0.535519126
-2	target	0.7786	0.653157895	0.510526316	0.97	0.668965517
-arithmetic mean		0.734166667	0.578947368	0.670542096	0.585	0.589304224
-harmonic mean		0.722561403	0.574327542	0.656046403	0.50429309	0.570246328
+0	source	0.4749	0.525263158	0.75	0.03	0.057692308
+1	source	0.8041	0.796842105	1	0.18	0.305084746
+2	source	0.7661	0.771578947	0.964285714	0.54	0.692307692
+0	target	0.5651	0.576315789	1	0.1	0.181818182
+1	target	0.75	0.62	0.840909091	0.37	0.513888889
+2	target	0.6067	0.6	1	0.08	0.148148148
+arithmetic mean		0.66115	0.648333333	0.925865801	0.216666667	0.316489994
+harmonic mean		0.63790168	0.633610854	0.914695559	0.090987059	0.165510386
   ...
 valve						
 section	domain	AUC	pAUC	precision	recall	F1 score
-0	source	0.5154	0.498947368	0.515151515	0.17	0.255639098
-1	source	0.4625	0.495789474	0.416666667	0.1	0.161290323
-2	source	0.5733	0.531052632	0.565217391	0.26	0.356164384
-0	target	0.5313	0.504210526	0.657894737	0.25	0.362318841
-1	target	0.6106	0.513684211	0.566037736	0.9	0.694980695
-2	target	0.4998	0.511052632	0.551724138	0.32	0.405063291
-arithmetic mean		0.53215	0.509122807	0.545448697	0.333333333	0.372576105
-harmonic mean		0.527825198	0.508861719	0.535256741	0.214556838	0.306324124
+0	source	0.615	0.556842105	1	0.01	0.01980198
+1	source	0.5735	0.501052632	1	0.01	0.01980198
+2	source	0.5833	0.516842105	0	0	0
+0	target	0.5391	0.515789474	0	0	0
+1	target	0.7371	0.617894737	0.607407407	0.82	0.69787234
+2	target	0.5277	0.507894737	0	0	0
+arithmetic mean		0.59595	0.536052632	0.434567901	0.14	0.122912717
+harmonic mean		0.588771731	0.533212354	4.44E-16	4.44E-16	4.44E-16
 						
 		AUC	pAUC	precision	recall	F1 score
-arithmetic mean over all machine types, sections, and domains		0.715579087	0.57952875	0.642966272	0.547498505	0.517271698
-harmonic mean over all machine types, sections, and domains		0.689876899	0.573595787	0.61590263	0.306473307	0.409285863
+arithmetic mean over all machine types, sections, and domains		0.616885065	0.571176451	0.485820851	0.203142415	0.220250915
+harmonic mean over all machine types, sections, and domains		0.59239137	0.559521566	6.22E-16	6.22E-16	6.22E-16
 ```
 
 ### 8. Run training script for "additional training dataset" (after April 1, 2021)
