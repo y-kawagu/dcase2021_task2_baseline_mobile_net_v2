@@ -1,5 +1,5 @@
 # dcase2021_task2_mobile_net_v2
-MobileNetV2-based baseline system for DCASE2021 Challenge Task 2.
+MobileNetV2-based baseline system for [DCASE2021 Challenge Task 2](http://dcase.community/challenge2021/task-unsupervised-detection-of-anomalous-sounds).
 
 ## Description
 This system consists of two main scripts:
