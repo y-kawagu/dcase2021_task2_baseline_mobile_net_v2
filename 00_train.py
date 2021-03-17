@@ -210,7 +210,7 @@ if __name__ == "__main__":
         n_vectors_ea_file = int(data.shape[0] / n_all_files)
 
         # make one-hot vector for conditioning
-        condition = np.empty((data.shape[0], n_sections), float)
+        condition = np.zeros((data.shape[0], n_sections), float)
         start_idx = 0
         for section_idx in range(n_sections):
             n_vectors = n_vectors_ea_file * n_files_ea_section[section_idx]
